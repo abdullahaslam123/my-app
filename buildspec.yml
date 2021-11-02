@@ -3,7 +3,7 @@ phases:
   pre_build:
     commands:
       - echo checking code quality...
-      - npm install
+      - npm install --verbose
   build:
     commands:
       - echo creating builddd...
