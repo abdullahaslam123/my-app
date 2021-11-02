@@ -6,7 +6,7 @@ phases:
       - npm install
   build:
     commands:
-      - echo creating build...
+      - echo creating builddd...
 			- npm start
   post_build:
     commands:
