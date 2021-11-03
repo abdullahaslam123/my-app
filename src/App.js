@@ -9,17 +9,16 @@ function handleSubmit(event) {
   console.log(event.target.password.value); 
  // You should see email and password in console.
  // ..code to submit form to backend here...
- var privateKey = eccrypto.generatePrivate();
-const convertedPrivateKey = privateKey.toString("hex");
+//  var privateKey = eccrypto.generatePrivate();
+// const convertedPrivateKey = privateKey.toString("hex");
 // fs.writeFileSync(path.resolve("./test"), convertedPrivateKey);
 let PUBLIC_KEY = process.env.REACT_APP_PUBLIC_KEY;
 
 // console.log("ASD: ", convertedPrivateKey)
-// const privateKeyString_HEX = Buffer.from(convertedPrivateKey,"hex"
-// );
-// var publicKey = eccrypto.getPublic(privateKeyString_HEX);
+ const publicKeyBuffer = Buffer.from(PUBLIC_KEY,"hex");
+
 eccrypto
-  .encrypt(PUBLIC_KEY, Buffer.from(event.target.password.value))
+  .encrypt(publicKeyBuffer, Buffer.from(event.target.password.value))
   .then(function (encrypted) {
     console.log("Encrypted Message", encrypted);
     
