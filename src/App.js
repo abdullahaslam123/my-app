@@ -13,6 +13,7 @@ function handleSubmit(event) {
  var privateKey = eccrypto.generatePrivate();
 const convertedPrivateKey = privateKey.toString("hex");
 // fs.writeFileSync(path.resolve("./test"), convertedPrivateKey);
+console.log(process.env.PUBLIC_KEY)
 console.log("ASD: ", convertedPrivateKey)
 const privateKeyString_HEX = Buffer.from(convertedPrivateKey,"hex"
 );
@@ -25,6 +26,7 @@ eccrypto
 .decrypt(privateKeyString_HEX, encrypted)
 .then(function (plaintext) {
   console.log("Message to part B:", plaintext.toString());
+
 });
 })
 
