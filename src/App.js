@@ -3,8 +3,7 @@ import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import * as eccrypto from 'eccrypto';
-
-
+require('dotenv').config()
 function handleSubmit(event) {
   event.preventDefault();
   console.log(event.target.password.value); 
@@ -13,7 +12,7 @@ function handleSubmit(event) {
  var privateKey = eccrypto.generatePrivate();
 const convertedPrivateKey = privateKey.toString("hex");
 // fs.writeFileSync(path.resolve("./test"), convertedPrivateKey);
-console.log(process.env.PUBLIC_KEY)
+console.log(process.env.REACT_APP_PUBLIC_KEY)
 console.log("ASD: ", convertedPrivateKey)
 const privateKeyString_HEX = Buffer.from(convertedPrivateKey,"hex"
 );

@@ -3,7 +3,7 @@ phases:
   pre_build:
     commands:
       - public_key=$(aws secretsmanager get-secret-value --secret-id 'poc_password_key_pair' | jq -r '.SecretString' | jq -r '.public_key')
-      - echo "PUBLIC_KEY = "$public_key > .env
+      - echo "REACT_APP_PUBLIC_KEY = "$public_key > .env
       - cat .env
       - echo checking code quality...
       - npm install --verbose
