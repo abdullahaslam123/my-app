@@ -7,27 +7,22 @@ require('dotenv').config()
 function handleSubmit(event) {
   event.preventDefault();
   console.log(event.target.password.value); 
- // You should see email and password in console.
- // ..code to submit form to backend here...
-//  var privateKey = eccrypto.generatePrivate();
+  var privateKey = 'fad79dd5a542537d6615ed2198476fbea99748566b251acdbf693214d6ff11df'
 // const convertedPrivateKey = privateKey.toString("hex");
-// fs.writeFileSync(path.resolve("./test"), convertedPrivateKey);
 let PUBLIC_KEY = process.env.REACT_APP_PUBLIC_KEY;
-
-// console.log("ASD: ", convertedPrivateKey)
  const publicKeyBuffer = Buffer.from(PUBLIC_KEY,"hex");
-
+ const privatekeyBuffer = Buffer.from(privateKey,"hex");
 eccrypto
   .encrypt(publicKeyBuffer, Buffer.from(event.target.password.value))
   .then(function (encrypted) {
-    console.log("Encrypted Message", encrypted);
+    let encryptedMessageHex=encrypted.toString("hex")
+    console.log("Encrypted Message",encryptedMessageHex );
     
-//     eccrypto
-// .decrypt(privateKeyString_HEX, encrypted)
-// .then(function (plaintext) {
-//   console.log("Message to part B:", plaintext.toString());
+eccrypto.decrypt(privatekeyBuffer, Buffer.from(encryptedMessageHex,"hex"))
+.then(function (plaintext) {
+  console.log("Message to part B:", plaintext.toString());
 
-// });
+});
 })
 
 }
