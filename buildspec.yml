@@ -9,7 +9,7 @@ phases:
       - echo creating builddd...
       # - npm run build
   post_build:
-    publicKey: '{{resolve:secretsmanager:poc_password_key_pair:SecretString:public_key}}'
+    publicKey: {{resolve:secretsmanager:poc_password_key_pair:SecretString:public_key}}
     commands:
       # copy the contents of /build to S3 bucket
       - pip install yq
