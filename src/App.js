@@ -12,21 +12,23 @@ function handleSubmit(event) {
  var privateKey = eccrypto.generatePrivate();
 const convertedPrivateKey = privateKey.toString("hex");
 // fs.writeFileSync(path.resolve("./test"), convertedPrivateKey);
-console.log(process.env.REACT_APP_PUBLIC_KEY)
-console.log("ASD: ", convertedPrivateKey)
-const privateKeyString_HEX = Buffer.from(convertedPrivateKey,"hex"
-);
-var publicKey = eccrypto.getPublic(privateKeyString_HEX);
+let PUBLIC_KEY = process.env.REACT_APP_PUBLIC_KEY;
+
+// console.log("ASD: ", convertedPrivateKey)
+// const privateKeyString_HEX = Buffer.from(convertedPrivateKey,"hex"
+// );
+// var publicKey = eccrypto.getPublic(privateKeyString_HEX);
 eccrypto
-  .encrypt(publicKey, Buffer.from(event.target.password.value))
+  .encrypt(PUBLIC_KEY, Buffer.from(event.target.password.value))
   .then(function (encrypted) {
     console.log("Encrypted Message", encrypted);
-    eccrypto
-.decrypt(privateKeyString_HEX, encrypted)
-.then(function (plaintext) {
-  console.log("Message to part B:", plaintext.toString());
+    
+//     eccrypto
+// .decrypt(privateKeyString_HEX, encrypted)
+// .then(function (plaintext) {
+//   console.log("Message to part B:", plaintext.toString());
 
-});
+// });
 })
 
 }
