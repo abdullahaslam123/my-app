@@ -37,6 +37,7 @@ export default function App() {
       noValidate
       autoComplete="off"
     >
+      <h1>ECIES POC</h1>
       <div>
         <TextField id="outlined-password-input" label="Password" type="text" name="password" />
       </div>
