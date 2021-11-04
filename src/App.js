@@ -16,7 +16,7 @@ eccrypto
   .then(function (encrypted) {
   let objstr=JSON.stringify(encrypted)
   let base64Date=Buffer.from(objstr).toString('hex'); // converted to hex
-  console.log("Encrypted Message to HEX",Buffer.from(base64Date).toString('base64'))
+  console.log("Encrypted Message to HEX",Buffer.from(base64Date).toString())
 console.log("Encrypted Message",encrypted );
     
 // eccrypto.decrypt(privatekeyBuffer, jsonObj)
